@@ -1,16 +1,23 @@
 # zobu
 
-A new Flutter project.
+It is a simple template to illustrate the flow of a social media application
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Step 1
+Create Acccount 
+![Follow the screen](../asset/images/1.png)
 
-A few resources to get you started if this is your first Flutter project:
+### Step 2
+Signin with you acccount 
+![Follow the screen](../asset/images/2.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Step 3
+Use the Bottom navigation to navigate through slides 
+![Follow the screen](../asset/images/3.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Step 4
+Click on images to link you to profile page 
+![Follow the screen](../asset/images/4.png)
+![Follow the screen](../asset/images/5.png)
+

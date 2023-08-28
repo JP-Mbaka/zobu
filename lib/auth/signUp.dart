@@ -1,43 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zobu/auth/login.dart';
 import 'package:zobu/constant/image_refs.dart';
+import 'package:zobu/model/users.dart';
+import 'package:zobu/provider/auth.dart';
 
 import '../constant/dimensions.dart';
 import '../style/colors.dart';
 import '../style/text.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends ConsumerState<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController fnameController = TextEditingController();
+  TextEditingController lnameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  signupUser() {
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    _formKey.currentState!.save();
+    // print(usernameController.text);
+    // print(fnameController.text);
+    UsersModel user = UsersModel(
+      username: usernameController.text,
+      fname: fnameController.text,
+      lname: lnameController.text,
+      password: passwordController.text,
+    );
+    final signUp = ref.read(usersProvider.notifier).registerUser(user);
+
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const LoginScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: Container(
+      body: SizedBox(
         height: height(context) - MediaQuery.of(context).viewInsets.bottom,
         width: width(context),
         child: Stack(
           children: [
-            Container(
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  Positioned(
-                    bottom: height(context) * 0.0003,
-                    child: Transform.rotate(
-                      angle: 90,
-                      child: Image.asset(
-                        hmm1,
-                        // height: height(context),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: height(context) * 0.3,
+            Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                Positioned(
+                  bottom: height(context) * 0.0003,
+                  child: Transform.rotate(
+                    angle: 90,
                     child: Image.asset(
-                      hmm2,
+                      hmm1,
                       // height: height(context),
                     ),
                   ),
-                ],
-              ),
+                ),
+                Positioned(
+                  bottom: height(context) * 0.3,
+                  child: Image.asset(
+                    hmm2,
+                    // height: height(context),
+                  ),
+                ),
+              ],
             ),
             Container(
               height:
@@ -54,9 +89,22 @@ class SignUp extends StatelessWidget {
                   ),
                   SizedBox(height: height(context) * 0.05),
                   Form(
+                    key: _formKey,
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: usernameController,
+                          onChanged: (val) {
+                            setState(() {
+                              _formKey.currentState?.validate();
+                            });
+                          },
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please enter a valid name';
+                            }
+                            return null;
+                          },
                           style: mediumBodyStyle(
                             color: WHITE2,
                             weight: FontWeight.w300,
@@ -82,6 +130,18 @@ class SignUp extends StatelessWidget {
                         ),
                         SizedBox(height: height(context) * 0.02),
                         TextFormField(
+                          controller: fnameController,
+                          onChanged: (val) {
+                            setState(() {
+                              _formKey.currentState?.validate();
+                            });
+                          },
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please enter a valid name';
+                            }
+                            return null;
+                          },
                           style: mediumBodyStyle(
                             color: WHITE2,
                             weight: FontWeight.w300,
@@ -106,6 +166,18 @@ class SignUp extends StatelessWidget {
                         ),
                         SizedBox(height: height(context) * 0.02),
                         TextFormField(
+                          controller: lnameController,
+                          onChanged: (val) {
+                            setState(() {
+                              _formKey.currentState?.validate();
+                            });
+                          },
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Please enter a valid name';
+                            }
+                            return null;
+                          },
                           style: mediumBodyStyle(
                             color: WHITE2,
                             weight: FontWeight.w300,
@@ -130,6 +202,24 @@ class SignUp extends StatelessWidget {
                         ),
                         SizedBox(height: height(context) * 0.02),
                         TextFormField(
+                          controller: passwordController,
+                          onChanged: (val) {
+                            setState(() {
+                              _formKey.currentState?.validate();
+                            });
+                          },
+                          validator: (value) {
+                            if (value == null ||
+                                value.trim().isEmpty ||
+                                value.trim().length < 6) {
+                              return 'Please enter a valid password more than 6 characters';
+                            }
+                            return null;
+                          },
+                          // inputFormatters: [
+                          //   FilteringTextInputFormatter.deny('filterPattern')
+                          // ],
+                          autocorrect: false,
                           style: mediumBodyStyle(
                             color: WHITE2,
                             weight: FontWeight.w300,
@@ -163,7 +253,7 @@ class SignUp extends StatelessWidget {
                             ),
                             IconButton.filled(
                               highlightColor: GREEN,
-                              onPressed: () {},
+                              onPressed: signupUser,
                               icon: const Icon(
                                 Icons.arrow_forward,
                                 color: WHITE,

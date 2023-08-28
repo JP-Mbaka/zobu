@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:zobu/constant/dimensions.dart';
 import 'package:zobu/constant/image_refs.dart';
+import 'package:zobu/model/users.dart';
 import 'package:zobu/style/colors.dart';
 
 import '../style/text.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
-
+  Profile({super.key, this.userArg});
+  UsersModel? userArg;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +35,7 @@ class Profile extends StatelessWidget {
                     ),
                     IconButton.filled(
                       onPressed: () {},
-                      icon: const Icon(Icons.devices_other),
+                      icon: const Icon(Icons.settings),
                     ),
                   ],
                 ),
@@ -54,15 +55,18 @@ class Profile extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      height: height(context) * 0.38,
-                      width: width(context) * 0.2,
+                      height: height(context) * 0.15,
+                      width: width(context) * 0.3,
                       decoration: BoxDecoration(
                           // color: GREEN,
                           // border: Border.all(),
                           borderRadius: BorderRadius.circular(300)),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(300),
-                        child: Image.asset(test),
+                        child: Image.asset(
+                          test,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                     Column(
@@ -81,11 +85,11 @@ class Profile extends StatelessWidget {
                 ),
                 SizedBox(height: height(context) * 0.04),
                 Text(
-                  'JohnPaul Chidera',
+                  '${userArg!.fname} ${userArg!.lname}',
                   style: mediumBodyStyle(weight: FontWeight.bold),
                 ),
                 Text(
-                  '@trendBby',
+                  '@${userArg!.username}',
                   style: smallBodyStyle(),
                 ),
                 SizedBox(height: height(context) * 0.04),

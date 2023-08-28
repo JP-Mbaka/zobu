@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zobu/constant/dimensions.dart';
 import 'package:zobu/constant/image_refs.dart';
+import 'package:zobu/home.dart';
 import 'package:zobu/post/feeds.dart';
 import 'package:zobu/style/colors.dart';
 import 'package:zobu/style/text.dart';
@@ -50,7 +51,7 @@ class Notifications extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (_) => const Feeds()),
+                            MaterialPageRoute(builder: (_) => const Home()),
                           );
                         },
                         icon: const Icon(

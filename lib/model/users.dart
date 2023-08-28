@@ -1,10 +1,10 @@
-class Users {
+class UsersModel {
   String username;
   String fname;
   String lname;
   String password;
 
-  Users({
+  UsersModel({
     required this.username,
     required this.fname,
     required this.lname,
