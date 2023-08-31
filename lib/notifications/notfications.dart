@@ -133,6 +133,136 @@ class Notifications extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 8),
+            Center(
+              child: Container(
+                width: width(context) * 0.75,
+                decoration: BoxDecoration(
+                  color: GREY2,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
+                      ),
+                      child: Container(
+                        height: height(context) * 0.1,
+                        width: width(context) * 0.15,
+                        color: GREEN2,
+                        child: Center(
+                            child: Text(
+                          'data',
+                          style: subHeaderStyle(color: WHITE),
+                        )),
+                      ),
+                    ),
+                    // SizedBox(width: width(context) * 0.05),
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 8,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            // crossAxisAlignment: ,
+                            children: [
+                              Text(
+                                'Yiolweh ikwmws',
+                                // textAlign: TextAlign.start,
+                                style: headerStyle(fontSize: 16.0),
+                              ),
+                              Text(
+                                'qhyuiedmeryfiuefjk',
+                                style: mediumBodyStyle(),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              IconButton.filled(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.arrow_forward_ios)),
+                            ],
+                          )
+                        ],
+                      ),
+                    ))
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Center(
+              child: Container(
+                width: width(context) * 0.75,
+                decoration: BoxDecoration(
+                  color: GREY2,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
+                      ),
+                      child: Container(
+                        height: height(context) * 0.1,
+                        width: width(context) * 0.15,
+                        color: BLUE,
+                        child: Center(
+                            child: Text(
+                          'data',
+                          style: subHeaderStyle(color: WHITE),
+                        )),
+                      ),
+                    ),
+                    // SizedBox(width: width(context) * 0.05),
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 8,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            // crossAxisAlignment: ,
+                            children: [
+                              Text(
+                                'Yiolweh ikwmws',
+                                // textAlign: TextAlign.start,
+                                style: headerStyle(fontSize: 16.0),
+                              ),
+                              Text(
+                                'qhyuiedmeryfiuefjk',
+                                style: mediumBodyStyle(),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              IconButton.filled(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.arrow_forward_ios)),
+                            ],
+                          )
+                        ],
+                      ),
+                    ))
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
