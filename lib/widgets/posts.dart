@@ -13,7 +13,9 @@ class PostsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      elevation: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,11 +46,12 @@ class PostsView extends StatelessWidget {
               ),
               Expanded(
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => Profile(userArg: postArgs.user),
-                          ),);
+                      MaterialPageRoute(
+                        builder: (_) => Profile(userArg: postArgs.user),
+                      ),
+                    );
                   },
                   child: Container(
                     height: height(context) * 0.35,
@@ -56,23 +59,23 @@ class PostsView extends StatelessWidget {
                     decoration: BoxDecoration(border: Border.all()),
                     child: postArgs.type == 'user'
                         ? Hero(
-                          tag: postArgs.user.username,
-                          child: Image.file(
+                            tag: postArgs.user.username,
+                            child: Image.file(
                               postArgs.post,
                               height: height(context),
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),
-                        )
+                          )
                         : Hero(
-                          tag: postArgs.user.username,
-                          child: Image.asset(
+                            tag: postArgs.user.username,
+                            child: Image.asset(
                               test,
                               height: height(context),
                               width: double.infinity,
                               fit: BoxFit.cover,
                             ),
-                        ), //Here we sre supposed to return videos not Image.asset()
+                          ), //Here we sre supposed to return videos not Image.asset()
                   ),
                 ),
               )
@@ -131,6 +134,12 @@ class PostsView extends StatelessWidget {
   }
 
   String dateFormat() {
+    if (postArgs.date.second < DateTime.now().second) {}
+    if (postArgs.date.minute < DateTime.now().minute) {}
+    if (postArgs.date.hour < DateTime.now().hour) {}
+    if (postArgs.date.day < DateTime.now().day) {}
+    if (postArgs.date.month < DateTime.now().month) {}
+
     if (postArgs.date.month <= 12) {
       return '${postArgs.date.month.toString()} months ago';
     } else if (postArgs.date.day <= 31) {

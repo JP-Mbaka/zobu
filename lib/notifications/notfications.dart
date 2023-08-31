@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:zobu/constant/dimensions.dart';
 import 'package:zobu/constant/image_refs.dart';
 import 'package:zobu/home.dart';
-import 'package:zobu/post/feeds.dart';
 import 'package:zobu/style/colors.dart';
 import 'package:zobu/style/text.dart';
 
@@ -64,10 +63,9 @@ class Notifications extends StatelessWidget {
             ),
             SizedBox(height: height(context) * 0.05),
             Container(
-              margin: const EdgeInsets.only(left: 200),
+              margin: const EdgeInsets.only(left: 50, bottom: 8),
               child: Text(
                 'Notifications',
-                textAlign: TextAlign.left,
                 style: headerStyle(),
               ),
             ),
@@ -81,13 +79,13 @@ class Notifications extends StatelessWidget {
                 child: Row(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
                       ),
                       child: Container(
-                        height: height(context) * 0.2,
-                        width: width(context) * 0.1,
+                        height: height(context) * 0.1,
+                        width: width(context) * 0.15,
                         color: BLUE,
                         child: Center(
                             child: Text(
@@ -96,21 +94,23 @@ class Notifications extends StatelessWidget {
                         )),
                       ),
                     ),
-                    SizedBox(width: width(context) * 0.05),
+                    // SizedBox(width: width(context) * 0.05),
                     Expanded(
                         child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
+                        vertical: 8,
+                        horizontal: 8,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
+                            // crossAxisAlignment: ,
                             children: [
                               Text(
                                 'Yiolweh ikwmws',
-                                style: headerStyle(),
+                                // textAlign: TextAlign.start,
+                                style: headerStyle(fontSize: 16.0),
                               ),
                               Text(
                                 'qhyuiedmeryfiuefjk',

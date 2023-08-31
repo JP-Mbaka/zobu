@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zobu/auth/login.dart';
 
+var kColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 18, 145, 117),
+);
+
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 18, 145, 117),
+);
 void main() {
   runApp(
     const ProviderScope(
@@ -18,14 +26,14 @@ class EntryApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Zobu',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 18, 145, 117),
-        ),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kColorScheme,
         useMaterial3: true,
       ),
-      //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-
+      theme: ThemeData().copyWith(
+        colorScheme: kColorScheme,
+        useMaterial3: true,
+      ),
       home: LoginScreen(),
     );
   }
