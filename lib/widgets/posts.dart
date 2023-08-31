@@ -15,6 +15,7 @@ class PostsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      color: Colors.transparent,
       elevation: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
